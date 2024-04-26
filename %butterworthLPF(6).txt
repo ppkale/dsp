@@ -1,0 +1,29 @@
+%butterworth LPF
+Ap=0.6;
+As=0.1;
+wp=0.35*pi;
+ws=0.7*pi;
+T=0.1;
+rp=-20*log10(Ap);
+rs=-20*log10(As);
+%digital frequency
+ohmp=(2/T)*tan(wp/2);
+ohms=(2/T)*tan(ws/2);
+%order and cutoff freq
+[N ,CF]=buttord(ohmp,ohms,rp,rs,'s');
+%transfer fun of filter in analog domain
+[B ,A]=butter(N,1,'s');
+%H(Sn)
+hsn=tf(B,A);
+%transfer fun of filter in digital domain
+[B1 ,A1]=butter(N,CF,'low','s');
+[num,den]=bilinear(B1,A1,1/T);
+%H(z)
+hz=tf(num,den,T);
+%magnitude response of the signal
+w=0:pi/16:pi;
+h=freqz(num,den,w);
+plot(w/pi,abs(h))
+title("low pass butterworth")
+xlabel("w")
+ylabel("H|w|")

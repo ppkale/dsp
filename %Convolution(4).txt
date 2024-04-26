@@ -1,0 +1,51 @@
+%Circular convolution with overlapping
+clc;
+clear all;
+close all;
+x1n=input('x1n=');
+x2n=input('x2n=');
+N1=length(x1n);
+N2=length(x2n);
+N=max(N1,N2);
+x1n=[x1n zeros(1,N-N1)]; x2n=[x2n zeros(1,N-N2)];
+%DFT of x1(n) and x2(n)
+x1k=fft(x1n);
+x2k=fft(x2n);
+x3k=x1k.*x2k;
+%idft of x3(k)
+x3n=ifft(x3k);
+disp('x1n=')
+disp(x1n)
+disp('x2n=')
+disp(x2n)
+disp('x1k=')
+disp(x1k)
+disp('x2k=')
+disp(x2k)
+disp('x3k=')
+disp(x3k)
+disp('Final output=') disp(x3n)
+
+%Circular convolution without overlapping
+clc;
+clear all;
+close all;
+x1n=input('x1n=');
+x2n=input('x2n=');
+N1=length(x1n);
+N2=length(x2n);
+N=max(N1+N2-1);
+x1n=[x1n zeros(1,N-(N2-1))]; x2n=[x2n zeros(1,N-(N1-1))];
+%DFT of x1(n) and x2(n)
+x1k=fft(x1n,N) x2k=fft(x2n,N) x3k=x1k.*x2k
+%idft of x3(k)
+x3n=ifft(x3k)
+disp('x1n=') disp(x1n) disp('x2n=')disp(x2n)
+disp('x1k=')
+disp(x1k)
+disp('x2k=')
+disp(x2k)
+disp('x3k=')
+disp(x3k)
+disp('Final output=') disp(x3n)
+

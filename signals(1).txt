@@ -1,0 +1,99 @@
+%CT sine wave
+t=0:0.001:1;
+A=5;
+f=7;
+y=A*sin(2*pi*f*t);
+subplot(5,2,1);
+plot(t,y);
+xlabel("Time");
+ylabel("Amplitude");
+title("CT sine wave");
+%DT sine wave
+n=0:0.1:1;
+A=5;
+f=7;
+x=A*sin(2*pi*f*n);
+subplot(5,2,2);
+stem(n,x);
+xlabel("Time");
+ylabel("Amplitude");
+title("DT sine wave");
+%CT cos wave
+t=0:0.001:1;
+A=5;
+f=7;
+y=cos(2*pi*f*t);
+subplot(5,2,3);
+plot(t,y);
+xlabel("Time");
+ylabel("Amplitude");
+title("CT cos wave");
+%DT cos wave
+n=0:0.1:1;
+A=5;
+f=7;
+x=cos(2*pi*f*n);
+subplot(5,2,4);
+stem(n,x);
+xlabel("Time");
+ylabel("Amplitude");
+title("DT cos wave");
+
+% CT square wave
+t=0:0.001:1;
+A=5;
+f=7;
+x=A*square(2*pi*f*t);
+
+1
+
+subplot(5,2,5);
+plot(t,x);
+xlabel("Time");
+ylabel("Amplitude");
+title("squre wave");
+% DT square wave
+n=0:0.1:1;
+A=5;
+f=7;
+x=A*square(2*pi*f*n);
+subplot(5,2,6);
+stem(n,x);
+xlabel("Time");
+ylabel("Amplitude");
+title("DT squre wave");
+% CT ramp wave
+t=0:0.001:1;
+r=t;
+subplot(5,2,7);
+plot(t,r);
+xlabel("Time");
+ylabel("Amplitude");
+title("CT ramp wave");
+% DT ramp wave
+n=0:0.1:1;
+r=n;
+subplot(5,2,8);
+stem(n,r);
+xlabel("Time");
+ylabel("Amplitude");
+title("DT ramp wave");
+%plot descrete squre wave with 8Hz
+% and 50% duty cycle.
+n=0:0.1:1;
+y1=square(2*pi*8*n,50);
+subplot(5,2,9);
+stem(n,y1);
+xlabel("Time");
+ylabel("Amplitude");
+title("DT sqaure wave");
+%plot sawtooth wavw fre. 3Hz
+% and peak halfway through perod.
+t=0:0.001:1;
+y2=sawtooth(2*pi*3*t,0.5);
+subplot(5,2,10)
+
+plot(t,y2);
+xlabel("Time");
+ylabel("Amplitude");
+title("swatooth wave");

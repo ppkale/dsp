@@ -1,0 +1,33 @@
+%samplingthm
+t=0:0.001:1;
+A=5;
+f=input("enter fm")%here enter fm=8
+x=sin(2*pi*f*t);
+plot(t,x)
+xlabel('time')
+ylabel('amplitude')
+title('continous')
+%fs=2*fm
+n=0:0.1:10;
+fs1=16;
+x1=A*sin(2*pi*(f/fs1)*n);
+stem(n,x1)
+xlabel('time')
+ylabel('amplitude')
+title('descrete wave fs=2*fm')
+%fs>2*fm
+n=0:0.1:10;
+fs2=32;
+x2=A*sin(2*pi*(f/fs2)*n)
+stem(n,x2)
+xlabel('time')
+ylabel('amplitude')
+title('descrete wave fs>2*fm')
+%fs<2*fm
+n=0:0.1:10;
+fs3=8;
+x3=A*sin(2*pi*(f/fs3)*n)
+stem(n,x3)
+xlabel('time')
+ylabel('amplitude')
+title('descrete wave fs<2*fm')

@@ -1,0 +1,50 @@
+%HAMMING
+wc=0.5*pi;
+N=25;
+eps=0.001;
+n=0:1:N-1;
+alpha=(N-1)/2;
+hd=sin(wc*(n-alpha+eps))/(pi*(n-alpha+eps));
+w=hamming(N);
+h=hd*w;
+freqz(abs(h))
+
+%RECTANGULAR
+wc=0.5*pi;
+N=25;
+eps=0.001;
+n=0:1:N-1;
+alpha=(N-1)/2;
+hd=sin(wc*(n-alpha+eps))/(pi*(n-alpha+eps));
+w=boxcar(N);
+h=hd*w;
+freqz(abs(h))
+
+%HANNING
+
+wc=0.5*pi;
+N=25;
+eps=0.001;
+n=0:1:N-1;
+alpha=(N-1)/2;
+hd=sin(wc*(n-alpha+eps))/(pi*(n-alpha+eps));
+w=hanning(N);
+h=hd*w;
+freqz(abs(h))
+
+%FIR  Filter  Design  :
+1)     For  Low  pass  filter:
+N=30;
+fs=8000;
+fc=2000;
+%normalization
+wc=fc/(fs/2);
+h=fir1(N,wc,'low',hamming(N+1)); freqz(h,1,1024,fs);
+grid on;
+
+2)     For  High  pass  filter  :
+N=30;
+fs=8000; %sampling freq fc=2000; %cutoff freq %normalization
+wc=fc/(fs/2);
+%impulse response
+h=fir1(N,wc,'high',hamming(N+1)); %magnitude plot freqz(h,1,1024,fs);

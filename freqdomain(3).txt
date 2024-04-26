@@ -1,0 +1,37 @@
+%freqdomain
+%DFT and IDFT OF GIVEN SIGNAL
+x=[1 0 1 0 1];
+Xk=fft(x);
+subplot(2,2,1);
+stem(Xk);
+ylabel('amplitude');
+xlabel('frequency index');
+title('spectrum of x(n)');
+grid on;
+%MAGNITUDE AND PHASE PLOT
+mag=abs(Xk);
+subplot(2,2,2);
+plot(mag);
+ylabel('amplitude');
+xlabel('frequency index'); 
+title('magnitude plot'); 
+Phase=angle(Xk); 
+subplot(2,2,3);
+plot(Phase);
+ylabel('Phase');
+xlabel('frequency index');
+title('phase spectrum');
+grid on;
+%original siganl x(n)
+xn=ifft(Xk); 
+subplot(2,2,4);
+stem(xn);
+ylabel('amplitude');
+xlabel('time index');
+title('original signal');
+grid on;
+mean=mean(x)
+std=std(x)
+var=var(x)
+Energy=sum(x) 
+power=[sum(x.^2)/length(x)]
